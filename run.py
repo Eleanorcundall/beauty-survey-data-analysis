@@ -12,8 +12,6 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('beauty-survey-data')
 
-worksheet = SHEET.get_worksheet(0) 
-
 def main_menu():
     print("Welcome to the Beauty Survey Data Analysis")
     print("1. Input Your Own Data")
@@ -35,19 +33,26 @@ def main_menu():
 
 survey_questions = [
      "Question 1: what is your age?",
-     "Question 2: Do you think Instagram influencers are having a positive impact on young people's self-esteem? Please type one of the following - Strongly disagree, Disagree, Neutral, Agree, Strongly agree ",
-     "Question 3: How much does Instagram or other social media affect what you purchase in the beauty industry? Please type one of the following - A lot, A little, A moderate amount, Not much at all, A significant amount ",
+     "Question 2: Do you think Instagram influencers are having a positive impact on young people's self-esteem? Please type one of the following - Strongly disagree, Disagree, Neutral, Agree, Strongly agree",
+     "Question 3: How much does Instagram or other social media affect what you purchase in the beauty industry? Please type one of the following - A lot, A little, A moderate amount, Not much at all, A significant amount",
      "Question 4: How often do you wear makeup? Please type one of the following - Rarely, Daily, Occasionally, Weekly, Monthly",
-     "Question 5: Do you feel investing in skin care products is worth it? Please type one of the following - Strongly disagree, Disagree, Neutral, Agree, Strongly agree ",
-     "Question 6: How would you rate your self-esteem and body image? Please type one of the following - Very low, Low, Neutral, High, Very High"
-     "Question 7: Do you subscribe to beauty boxes or services that provide you with new products regularly? Please type one of the following - Yes, No"
+     "Question 5: Do you feel investing in skin care products is worth it? Please type one of the following - Strongly disagree, Disagree, Neutral, Agree, Strongly agree",
+     "Question 6: How would you rate your self-esteem and body image? Please type one of the following - Very low, Low, Neutral, High, Very High",
+     "Question 7: Do you subscribe to beauty boxes or services that provide you with new products regularly? Please type one of the following - Yes, No",
      "Question 8: How much do you typically spend on beauty products each month? Please type one of the following - under £25, £25 - £50, £50 - £100, £100 - £200, £200 - £300, Over £300",
-     "Question 9: Do you have a step by step skincare routuine? Please type one of the following - Yes, No"
+     "Question 9: Do you have a step by step skincare routuine? Please type one of the following - Yes, No",
      "Question 10: Do you feel more attaractive when you are wearing makeup? Please type one of the following - Yes, No"
-]        
+]
 
-def input_data(worksheet, survey_questions):
-    
+worksheet = SHEET.get_worksheet(1)
+
+def input_data():
+    for i, question in enumerate(survey_questions):
+        print(question)
+        response = input(f"Enter your response for {question}: ")  # Get the response from the user
+        col = i + 2  # Calculate the column index (assuming questions start in column B)
+        worksheet.update_cell(1, col, question)  # Update the question as the header
+        worksheet.update_cell(2, col, response)  # Update the response in the corresponding column
 
 
 def view_data_analysis():
