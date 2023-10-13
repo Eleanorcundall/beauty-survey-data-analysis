@@ -47,12 +47,17 @@ survey_questions = [
 worksheet = SHEET.get_worksheet(1)
 
 def input_data():
-    for i, question in enumerate(survey_questions):
-        print(question)
-        response = input(f"Enter your response for {question}: ")  # Get the response from the user
-        col = i + 2  # Calculate the column index (assuming questions start in column B)
-        worksheet.update_cell(1, col, question)  # Update the question as the header
-        worksheet.update_cell(2, col, response)  # Update the response in the corresponding column
+    responses = []
+
+    for question in survey_questions:
+        response = input(f"{question}: ")  # Get the response from the user
+        responses.append(response)
+
+    # Find the last row with data
+    last_row = len(worksheet.col_values(1)) + 1
+
+    for col, response in enumerate(responses, start=1):
+        worksheet.update_cell(last_row, col, response)
 
 
 def view_data_analysis():
