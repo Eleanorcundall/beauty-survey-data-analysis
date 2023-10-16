@@ -1,5 +1,6 @@
 import gspread
 from google.oauth2.service_account import Credentials
+from collections import Counter
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -88,8 +89,22 @@ def input_data():
 
 
 def view_data_analysis():
-    # Your code for data analysis goes here
-    pass
+    print("Data Analysis Menu")
+    print("Choose a question number to analyze (1-10):")
+    question_number = int(input())
+
+    # Ensure the chosen question number is valid
+    if question_number < 1 or question_number > 10:
+        print("Invalid question number. Please choose a number between 1 and 10.")
+        return
+
+    # Retrieve the chosen question
+    chosen_question = survey_questions[question_number - 1]
+
+    # Retrieve the responses for the chosen question from the spreadsheet
+    responses = worksheet.col_values(question_number)
+    print(responses)
+
 
 if __name__ == '__main__':
     main_menu()
