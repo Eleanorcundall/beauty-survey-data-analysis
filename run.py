@@ -42,7 +42,7 @@ survey_questions = [
      "7: Do you subscribe to beauty boxes or services that provide you with new products regularly? Please type one of the following - yes, no",
      "8: How much do you typically spend on beauty products each month? Please type one of the following - under £25, £25 - £50, £50 - £100, £100 - £200, £200 - £300, over £300",
      "9: Do you have a step by step skincare routuine? Please type one of the following - yes, no",
-     "10: Do you feel more attaractive when you are wearing makeup? Please type one of the following - yes, no"
+     "10: Do you feel more attractive when you are wearing makeup? Please type one of the following - yes, no"
 ]
 
 worksheet = SHEET.get_worksheet(0)
@@ -99,11 +99,17 @@ def view_data_analysis():
         return
 
     # Retrieve the chosen question
-    chosen_question = survey_questions[question_number - 1]
-
-    # Retrieve the responses for the chosen question from the spreadsheet
     responses = worksheet.col_values(question_number)
-    print(responses)
+# Ensure that the question text is not counted as a vote
+    question_text = responses[0]
+    non_empty_responses = [response for response in responses[1:] if response != question_text]
+    response_counts = Counter(non_empty_responses)
+    
+    print(response_counts)
+
+   
+    
+
 
 
 if __name__ == '__main__':
