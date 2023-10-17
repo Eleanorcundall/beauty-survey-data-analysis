@@ -1,6 +1,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
 from collections import Counter
+from fractions import Fraction 
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -105,7 +106,33 @@ def view_data_analysis():
     non_empty_responses = [response for response in responses[1:] if response != question_text]
     response_counts = Counter(non_empty_responses)
     
-    print(response_counts)
+    print(f"Analysis for question number {question_number}:")
+    for response, count in response_counts.items():
+        print(f"{response}: {count} voters")
+
+    print("View as:")
+    print("1. Decimal")
+    print("2. Fraction")
+    print("3. Percentage")
+    view_option = input("Enter your choice (1/2/3): ")
+
+    if view_option == '1':
+        # Display as decimal
+        for response, count in response_counts.items():
+            print(f"{response}: {count / len(responses):.2f}")
+    if view_option == '2':
+    # Display as a fraction
+        total_responses = len(responses)
+        for response, count in response_counts.items():
+            fraction = Fraction(count, total_responses)  # Use the Fraction class to calculate fractions
+            print(f"{response}: {fraction}")
+        
+    elif view_option == '3':
+    # Display as a percentage
+        for response, count in response_counts.items():
+            percentage = (count / len(responses)) * 100
+            print(f"{response}: {percentage:.2f}%")
+
 
    
     
