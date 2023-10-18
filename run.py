@@ -98,14 +98,35 @@ def view_data_analysis():
     if question_number < 1 or question_number > 10:
         print("Invalid question number. Please choose a number between 1 and 10.")
         return
-
-    # Retrieve the chosen question
-    responses = worksheet.col_values(question_number)
-# Ensure that the question text is not counted as a vote
-    question_text = responses[0]
-    non_empty_responses = [response for response in responses[1:] if response != question_text]
-    response_counts = Counter(non_empty_responses)
     
+    if question_number == 1:
+    # Special case for analyzing the age question
+        age_responses = [int(age) for age in worksheet.col_values(1)[1:]]
+        # Calculate statistics only if there are age responses
+        average_age = sum(age_responses) / len(age_responses)
+        oldest_age = max(age_responses)
+        youngest_age = min(age_responses)
+        print(f"Average Age: {average_age:.2f}")
+        print(f"Oldest Person: {oldest_age}")
+        print(f"Youngest Person: {youngest_age}")
+    else:
+        # Retrieve the chosen question
+        responses = worksheet.col_values(question_number)
+        # Ensure that the question text is not counted as a vote
+        question_text = responses[0]
+        non_empty_responses = [response for response in responses[1:] if response != question_text]
+        response_counts = Counter(non_empty_responses)
+        
+        print(f"Analysis for question number {question_number}:")
+        for response, count in response_counts.items():
+            print(f"{response}: {count} voters") # Exit early, no need to proceed with the rest of the code
+        # Retrieve the chosen question
+        responses = worksheet.col_values(question_number)
+        # Ensure that the question text is not counted as a vote
+        question_text = responses[0]
+        non_empty_responses = [response for response in responses[1:] if response != question_text]
+        response_counts = Counter(non_empty_responses)
+        
     print(f"Analysis for question number {question_number}:")
     for response, count in response_counts.items():
         print(f"{response}: {count} voters")
