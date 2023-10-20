@@ -200,6 +200,22 @@ def view_as_bar_chart(question_number):
     plt.xticks(rotation=45)  # Rotate x-axis labels for better readability
     plt.show()
 
+def view_as_histogram(question_number):
+    responses = worksheet.col_values(question_number)
+    question_text = responses[0]
+    non_empty_responses = [response for response in responses[1:] if response != question_text]
+
+    # Convert responses to integers if the question is about age
+    if question_number == 1:
+        non_empty_responses = [int(response) for response in non_empty_responses]
+
+    plt.figure(figsize=(10, 6))
+    plt.hist(non_empty_responses, bins=10, edgecolor='k')
+    plt.xlabel("Responses")
+    plt.ylabel("Count")
+    plt.title(f"Distribution of Responses to {question_text}")
+    plt.show()
+
 
 if __name__ == '__main__':
     main_menu()
