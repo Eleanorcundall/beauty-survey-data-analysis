@@ -172,8 +172,33 @@ def view_data_visualization():
     print("3. Table")
     visualization_option = input("Enter your choice (1/2/3): ")
 
-    
+    if visualization_option == '1':
+        view_as_bar_chart(question_number)
+    elif visualization_option == '2':
+        view_as_histogram(question_number)
+    elif visualization_option == '3':
+        view_as_table(question_number)
+    else:
+        print("Invalid choice. Please select 1, 2, or 3.")
+        view_data_visualization()
 
+def view_as_bar_chart(question_number):
+    responses = worksheet.col_values(question_number)
+    question_text = responses[0]
+    non_empty_responses = [response for response in responses[1:] if response != question_text]
+    response_counts = Counter(non_empty_responses)
+
+    # Create a bar chart for the responses
+    response_labels = list(response_counts.keys())
+    response_values = list(response_counts.values())
+
+    plt.figure(figsize=(10, 6))
+    plt.bar(response_labels, response_values)
+    plt.xlabel("Responses")
+    plt.ylabel("Count")
+    plt.title(f"Responses to {question_text}")
+    plt.xticks(rotation=45)  # Rotate x-axis labels for better readability
+    plt.show()
 
 
 if __name__ == '__main__':
