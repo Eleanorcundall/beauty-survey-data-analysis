@@ -159,6 +159,13 @@ def view_data_analysis():
 
 def view_data_visualization():
     print("Data Visualization Menu")
+    
+    question_number = int(input("Enter the question number you want to visualize (1-10): "))
+    
+    if question_number < 1 or question_number > 10:
+        print("Invalid question number. Please choose a number between 1 and 10.")
+        return
+
     print("1. Bar Chart")
     print("2. Histogram (for age)")
     print("3. Table")
