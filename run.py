@@ -20,7 +20,8 @@ def main_menu():
     print("Welcome to the Beauty Survey Data Analysis")
     print("1. Input Your Own Data")
     print("2. View Data Analysis")
-    print("3. Exit")
+    print("3. view data visualization")
+    print("4. Exit")
 
     choice = input("Enter your choice (1/2/3/4): ")
 
