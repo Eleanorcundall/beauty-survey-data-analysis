@@ -2,6 +2,8 @@ import gspread
 from google.oauth2.service_account import Credentials
 from collections import Counter
 from fractions import Fraction 
+import matplotlib.pyplot as plt
+
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -20,13 +22,15 @@ def main_menu():
     print("2. View Data Analysis")
     print("3. Exit")
 
-    choice = input("Enter your choice (1/2/3): ")
+    choice = input("Enter your choice (1/2/3/4): ")
 
     if choice == '1':
         input_data()
     elif choice == '2':
         view_data_analysis()
     elif choice == '3':
+        view_data_visualization()    
+    elif choice == '4':
         exit()
     else:
         print("Invalid choice. Please select 1, 2, or 3.")
@@ -98,6 +102,7 @@ def view_data_analysis():
     if question_number < 1 or question_number > 10:
         print("Invalid question number. Please choose a number between 1 and 10.")
         return
+
     
     if question_number == 1:
     # Special case for analyzing the age question
@@ -152,8 +157,13 @@ def view_data_analysis():
                 percentage = (count / len(responses)) * 100
                 print(f"{response}: {percentage:.2f}%")
 
+def view_data_visualization():
+    print("Data Visualization Menu")
+    print("1. Bar Chart")
+    print("2. Histogram (for age)")
+    print("3. Table")
+    visualization_option = input("Enter your choice (1/2/3): ")
 
-   
     
 
 
