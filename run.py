@@ -3,6 +3,7 @@ from google.oauth2.service_account import Credentials
 from collections import Counter
 from fractions import Fraction 
 import matplotlib.pyplot as plt
+import pandas as pd
 
 
 SCOPE = [
@@ -215,6 +216,22 @@ def view_as_histogram(question_number):
     plt.ylabel("Count")
     plt.title(f"Distribution of Responses to {question_text}")
     plt.show()
+
+def view_as_table(question_number):
+    responses = worksheet.col_values(question_number)
+    question_text = responses[0]
+    non_empty_responses = [response for response in responses[1:] if response != question_text]
+
+    if question_number == 1:
+        # If the question is about age, convert responses to integers
+        non_empty_responses = [int(response) for response in non_empty_responses]
+
+    data = {'Responses': non_empty_responses}
+    df = pd.DataFrame(data)
+
+    # Display the data as a table
+    print(f"Table of Responses to {question_text}:\n")
+    print(df)
 
 
 if __name__ == '__main__':
