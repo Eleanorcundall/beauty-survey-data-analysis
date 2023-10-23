@@ -98,14 +98,19 @@ def input_data():
 def view_data_analysis():
     print("Data Analysis Menu")
     print("Choose a question number to analyze (1-10):\n" + "\n".join(survey_questions))
-    question_number = int(input())
+  
+    while True:
+        try:
+            question_number = int(input("Enter the question number you want to visualize (1-10): "))
+            while question_number not in [1,2,3,4,5,6,7,8,9,10]:
+                print('Not an appropriate choice, please select a valid row')
+                question_number = int(input("Enter the row of the ship: "))
+        except ValueError:
+            print('Not an appropriate choice, please select a valid row')
+            continue
+        else:
+            break
 
-    # Ensure the chosen question number is valid
-    if question_number < 1 or question_number > 10:
-        print("Invalid question number. Please choose a number between 1 and 10.")
-        return
-
-    
     if question_number == 1:
     # Special case for analyzing the age question
         age_responses = [int(age) for age in worksheet.col_values(1)[1:]]
@@ -161,12 +166,18 @@ def view_data_analysis():
 
 def view_data_visualization():
     print("Data Visualization Menu")
-    
-    question_number = int(input("Enter the question number you want to visualize (1-10): "))
-    
-    if question_number < 1 or question_number > 10:
-        print("Invalid question number. Please choose a number between 1 and 10.")
-        return
+
+    while True:
+        try:
+            question_number = int(input("Enter the question number you want to visualize (1-10): "))
+            while question_number not in [1,2,3,4,5,6,7,8,9,10]:
+                print('Not an appropriate choice, please select a valid row')
+                question_number = int(input("Enter the row of the ship: "))
+        except ValueError:
+            print('Not an appropriate choice, please select a valid row')
+            continue
+        else:
+            break
 
     print("1. Bar Chart")
     print("2. Histogram (for age)")
