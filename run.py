@@ -197,6 +197,45 @@ def calculate_data_averages(question_number, worksheet):
         }
         
 
+def view_data_averages():
+    print("Data Averages Menu")
+
+    while True:
+        try:
+            question_number = int(input("Enter the question number you want to calculate averages for (1-10): "))
+            while question_number not in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]:
+                print("Not an appropriate choice, please select a valid row")
+                question_number = int(input("Enter the row of the ship: "))
+        except ValueError:
+            print("Not an appropriate choice, please select a valid row")
+            continue
+        else:
+            break
+
+    data_averages = calculate_data_averages(question_number, worksheet)
+
+    print(f"Data Averages for question number {question_number}:")
+    print(data_averages['Question'])
+
+    if question_number == 1:
+        print(f"Average Age: {data_averages['Average Age']}")
+        print(f"Oldest Person: {data_averages['Oldest Person']}")
+        print(f"Youngest Person: {data_averages['Youngest Person']}")
+    else:
+        most_common_response = data_averages['Most Common Response']
+        least_common_response = data_averages['Least Common Response']
+
+        if most_common_response:
+            most_common_response, most_common_count = most_common_response[0]
+            print(f"Most Common Response: {most_common_response} ({most_common_count} voters)")
+
+        if least_common_response:
+            least_common_response, least_common_count = least_common_response
+            print(f"Least Common Response: {least_common_response} ({least_common_count} voter{'s' if least_common_count > 1 else ''})")
+
+    main_menu()
+
+
 if __name__ == '__main__':
     main_menu()
                 
