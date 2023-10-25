@@ -114,16 +114,31 @@ def view_data_analysis():
             break
 
     if question_number == 1:
-    # Special case for analyzing the age question
-        age_responses = [int(age) for age in worksheet.col_values(1)[1:]]
-        # Calculate statistics only if there are age responses
-        print(f"Analysis for question number {question_number}:")
-        average_age = sum(age_responses) / len(age_responses)
-        oldest_age = max(age_responses)
-        youngest_age = min(age_responses)
-        print(f"Average Age: {average_age:.2f}")
-        print(f"Oldest Person: {oldest_age}")
-        print(f"Youngest Person: {youngest_age}")
+        # Ask the user how they want to view the data (table or averages)
+        print("Choose how to view the data for question number 1:")
+        print("1. Table")
+        print("2. Averages")
+        view_option = input("Enter your choice (1/2): ")
+
+        if view_option == '1':
+            # Display as a table
+            age_responses = [int(age) for age in worksheet.col_values(1)[1:]]
+            table_data = {"Age": age_responses}
+            table_df = pd.DataFrame(table_data)
+            print(table_df)
+        elif view_option == '2':
+            # Display averages
+            age_responses = [int(age) for age in worksheet.col_values(1)[1:]]
+            average_age = sum(age_responses) / len(age_responses)
+            oldest_age = max(age_responses)
+            youngest_age = min(age_responses)
+            print(f"Analysis for question number {question_number}:")
+            print(f"Average Age: {average_age:.2f}")
+            print(f"Oldest Person: {oldest_age}")
+            print(f"Youngest Person: {youngest_age}")
+        else:
+            print("Invalid choice. Please select 1 or 2.")
+
         main_menu()
     else:
         # Retrieve the chosen question
@@ -134,8 +149,6 @@ def view_data_analysis():
         response_counts = Counter(non_empty_responses)
 
         print(f"Analysis for question number {question_number}:")
-        for response, count in response_counts.items():
-            print(f"{response}: {count} voters") # Exit early, no need to proceed with the rest of the code
         # Retrieve the chosen question
         responses = worksheet.col_values(question_number)
         # Ensure that the question text is not counted as a vote
