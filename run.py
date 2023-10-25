@@ -214,6 +214,7 @@ def calculate_most_and_least_responses(question_number, worksheet):
 
 def view_data_common_responses():
     print("Data Averages Menu")
+    print("Choose a question number to analyze (1-10):\n" + "\n".join(survey_questions))
 
     while True:
         try:
