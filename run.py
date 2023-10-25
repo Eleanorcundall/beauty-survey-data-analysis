@@ -2,7 +2,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 from collections import Counter
 from fractions import Fraction
-import plotly.express as px
+from collections import Counter
 import pandas as pd
 
 
@@ -22,7 +22,7 @@ def main_menu():
     print("Welcome to the Beauty Survey Data Analysis")
     print("1. Input Your Own Data")
     print("2. View Data Analysis")
-    print("3. View data visualization")
+    print("3. View data Averages")
     print("4. Exit")
 
     choice = input("Enter your choice (1/2/3/4): ")
@@ -32,7 +32,7 @@ def main_menu():
     elif choice == '2':
         view_data_analysis()
     elif choice == '3':
-        view_data_visualization()    
+        view_data_averages()    
     elif choice == '4':
         exit()
     else:
@@ -95,150 +95,36 @@ def input_data():
     for col, response in enumerate(responses, start=1):
         worksheet.update_cell(last_row, col, response)
 
-
-def view_data_analysis():
-    print("Data Analysis Menu")
-    print("Choose a question number to analyze (1-10):\n" + "\n".join(survey_questions))
-  
-    while True:
-        try:
-            question_number = int(input("Enter the question number you want to visualize (1-10): "))
-            while question_number not in [1,2,3,4,5,6,7,8,9,10]:
-                print('Not an appropriate choice, please select a valid row')
-                question_number = int(input("Enter the row of the ship: "))
-        except ValueError:
-            print('Not an appropriate choice, please select a valid row')
-            continue
-        else:
-            break
-
-    if question_number == 1:
-    # Special case for analyzing the age question
-        age_responses = [int(age) for age in worksheet.col_values(1)[1:]]
-        # Calculate statistics only if there are age responses
-        print(f"Analysis for question number {question_number}:")
-        average_age = sum(age_responses) / len(age_responses)
-        oldest_age = max(age_responses)
-        youngest_age = min(age_responses)
-        print(f"Average Age: {average_age:.2f}")
-        print(f"Oldest Person: {oldest_age}")
-        print(f"Youngest Person: {youngest_age}")
-    else:
-        # Retrieve the chosen question
-        responses = worksheet.col_values(question_number)
-        # Ensure that the question text is not counted as a vote
-        question_text = responses[0]
-        non_empty_responses = [response for response in responses[1:] if response != question_text]
-        response_counts = Counter(non_empty_responses)
-        
-        print(f"Analysis for question number {question_number}:")
-        for response, count in response_counts.items():
-            print(f"{response}: {count} voters") # Exit early, no need to proceed with the rest of the code
-        # Retrieve the chosen question
-        responses = worksheet.col_values(question_number)
-        # Ensure that the question text is not counted as a vote
-        question_text = responses[0]
-        non_empty_responses = [response for response in responses[1:] if response != question_text]
-        response_counts = Counter(non_empty_responses)
-        
-
-        print("View as:")
-        print("1. Decimal")
-        print("2. Fraction")
-        print("3. Percentage")
-        view_option = input("Enter your choice (1/2/3): ")
-
-        if view_option == '1':
-            # Display as decimal
-            for response, count in response_counts.items():
-                print(f"{response}: {count / len(responses):.2f}")
-        if view_option == '2':
-        # Display as a fraction
-            total_responses = len(responses)
-            for response, count in response_counts.items():
-                fraction = Fraction(count, total_responses)  # Use the Fraction class to calculate fractions
-                print(f"{response}: {fraction}")
-            
-        elif view_option == '3':
-        # Display as a percentage
-            for response, count in response_counts.items():
-                percentage = (count / len(responses)) * 100
-                print(f"{response}: {percentage:.2f}%")
-
-def view_data_visualization():
-    print("Data Visualization Menu")
-
-    while True:
-        try:
-            question_number = int(input("Enter the question number you want to visualize (1-10): "))
-            while question_number not in [1,2,3,4,5,6,7,8,9,10]:
-                print('Not an appropriate choice, please select a valid row')
-                question_number = int(input("Enter the row of the ship: "))
-        except ValueError:
-            print('Not an appropriate choice, please select a valid row')
-            continue
-        else:
-            break
-
-    print("1. Bar Chart")
-    print("2. Histogram (for age)")
-    print("3. Table")
-    visualization_option = input("Enter your choice (1/2/3): ")
-
-    if visualization_option == '1':
-        view_as_bar_chart(question_number)
-    elif visualization_option == '2':
-        view_as_histogram(question_number)
-    elif visualization_option == '3':
-        view_as_table(question_number)
-    else:
-        print("Invalid choice. Please select 1, 2, or 3.")
-        view_data_visualization()
-
-def view_as_bar_chart(question_number):
-    responses = worksheet.col_values(question_number)
-    question_text = responses[0]
-    non_empty_responses = [response for response in responses[1:] if response != question_text]
-    response_counts = Counter(non_empty_responses)
-
-    fig = px.bar(x=list(response_counts.keys()), y=list(response_counts.values()), labels={'x': 'Responses', 'y': 'Count'})
-    fig.update_layout(title=f"Responses to {question_text}")
-
-    fig.show()
-
-    
-def view_as_histogram(question_number):
+def calculate_data_averages(question_number, worksheet):
     responses = worksheet.col_values(question_number)
     question_text = responses[0]
     non_empty_responses = [response for response in responses[1:] if response != question_text]
 
-    # Convert responses to integers if the question is about age
     if question_number == 1:
         non_empty_responses = [int(response) for response in non_empty_responses]
 
-    plt.figure(figsize=(10, 6))
-    plt.hist(non_empty_responses, bins=10, edgecolor='k')
-    plt.xlabel("Responses")
-    plt.ylabel("Count")
-    plt.title(f"Distribution of Responses to {question_text}")
-    plt.show()
+        average_age = sum(non_empty_responses) / len(non_empty_responses)
+        oldest_age = max(non_empty_responses)
+        youngest_age = min(non_empty_responses)
+        return {
+            "Question": question_text,
+            "Average Age": f"{average_age:.2f}",
+            "Oldest Person": oldest_age,
+            "Youngest Person": youngest_age,
+        }
+    else:
+        response_counts = Counter(non_empty_responses)
+        total_responses = len(non_empty_responses)
 
-def view_as_table(question_number):
-    responses = worksheet.col_values(question_number)
-    question_text = responses[0]
-    non_empty_responses = [response for response in responses[1:] if response != question_text]
+        most_common_response = response_counts.most_common(1)
+        least_common_response = response_counts.most_common()[-1]
 
-    if question_number == 1:
-        # If the question is about age, convert responses to integers
-        non_empty_responses = [int(response) for response in non_empty_responses]
-
-    data = {'Responses': non_empty_responses}
-    df = pd.DataFrame(data)
-
-    # Display the data as a table
-    print(f"Table of Responses to {question_text}:\n")
-    print(df)
-
+        return {
+            "Question": question_text,
+            "Most Common Response": most_common_response,
+            "Least Common Response": least_common_response,
+        }
+        
 
 if __name__ == '__main__':
     main_menu()
