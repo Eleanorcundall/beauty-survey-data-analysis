@@ -19,10 +19,10 @@ SHEET = GSPREAD_CLIENT.open('beauty-survey-data')
 
 
 def main_menu():
-    print("Welcome to the Beauty Survey Data Analysis")
+    print("Beauty Survey Data Analysis")
     print("1. Input Your Own Data")
     print("2. View Data Analysis")
-    print("3. View data Averages")
+    print("3. View the data's most and least common responses")
     print("4. Exit")
 
     choice = input("Enter your choice (1/2/3/4): ")
@@ -32,7 +32,7 @@ def main_menu():
     elif choice == '2':
         view_data_analysis()
     elif choice == '3':
-        view_data_averages()    
+        view_data_common_responses()    
     elif choice == '4':
         exit()
     else:
@@ -94,6 +94,7 @@ def input_data():
 
     for col, response in enumerate(responses, start=1):
         worksheet.update_cell(last_row, col, response)
+        main_menu()
 
 
 def view_data_analysis():
@@ -123,6 +124,7 @@ def view_data_analysis():
         print(f"Average Age: {average_age:.2f}")
         print(f"Oldest Person: {oldest_age}")
         print(f"Youngest Person: {youngest_age}")
+        main_menu()
     else:
         # Retrieve the chosen question
         responses = worksheet.col_values(question_number)
@@ -143,30 +145,37 @@ def view_data_analysis():
 
 
         print("View as:")
-        print("1. Decimal")
+        print("1. Table")
         print("2. Fraction")
         print("3. Percentage")
         view_option = input("Enter your choice (1/2/3): ")
 
         if view_option == '1':
-            # Display as decimal
+             # Display as a table
+            table_data = {"Response": [], "Count": []}
             for response, count in response_counts.items():
-                print(f"{response}: {count / len(responses):.2f}")
+                table_data["Response"].append(response)
+                table_data["Count"].append(count)
+
+            table_df = pd.DataFrame(table_data)
+            print(table_df)
         if view_option == '2':
         # Display as a fraction
             total_responses = len(responses)
             for response, count in response_counts.items():
                 fraction = Fraction(count, total_responses)  # Use the Fraction class to calculate fractions
                 print(f"{response}: {fraction}")
-
         elif view_option == '3':
         # Display as a percentage
             for response, count in response_counts.items():
                 percentage = (count / len(responses)) * 100
                 print(f"{response}: {percentage:.2f}%")
+                
+        main_menu()
+        
 
 
-def calculate_data_averages(question_number, worksheet):
+def calculate_most_and_least_responses(question_number, worksheet):
     responses = worksheet.col_values(question_number)
     question_text = responses[0]
     non_empty_responses = [response for response in responses[1:] if response != question_text]
@@ -177,11 +186,17 @@ def calculate_data_averages(question_number, worksheet):
         average_age = sum(non_empty_responses) / len(non_empty_responses)
         oldest_age = max(non_empty_responses)
         youngest_age = min(non_empty_responses)
+        age_counts = Counter(non_empty_responses)
+        most_common_age = age_counts.most_common(1)
+        least_common_age = age_counts.most_common()[-1]
+
         return {
             "Question": question_text,
             "Average Age": f"{average_age:.2f}",
             "Oldest Person": oldest_age,
             "Youngest Person": youngest_age,
+            "Most Common Age": most_common_age,
+            "Least Common Age": least_common_age,
         }
     else:
         response_counts = Counter(non_empty_responses)
@@ -197,33 +212,38 @@ def calculate_data_averages(question_number, worksheet):
         }
         
 
-def view_data_averages():
+def view_data_common_responses():
     print("Data Averages Menu")
 
     while True:
         try:
-            question_number = int(input("Enter the question number you want to calculate averages for (1-10): "))
+            question_number = int(input("Enter the question number you want to calculate common responses for (1-10): "))
             while question_number not in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]:
-                print("Not an appropriate choice, please select a valid row")
-                question_number = int(input("Enter the row of the ship: "))
+                print("Not an appropriate choice, please select a valid question number")
+                question_number = int(input("Enter the question number: "))
         except ValueError:
-            print("Not an appropriate choice, please select a valid row")
+            print("Not an appropriate choice, please select a valid question number")
             continue
         else:
             break
 
-    data_averages = calculate_data_averages(question_number, worksheet)
+    data_responses = calculate_most_and_least_responses(question_number, worksheet)
 
-    print(f"Data Averages for question number {question_number}:")
-    print(data_averages['Question'])
+    print(f"Common Responses for question number {question_number}:")
+    print(data_responses['Question'])
 
     if question_number == 1:
-        print(f"Average Age: {data_averages['Average Age']}")
-        print(f"Oldest Person: {data_averages['Oldest Person']}")
-        print(f"Youngest Person: {data_averages['Youngest Person']}")
+        most_common_age = data_responses['Most Common Age']
+        least_common_age = data_responses['Least Common Age']
+        if most_common_age:
+            most_common_age, most_common_count = most_common_age[0]
+            print(f"Most Common Age: {most_common_age} ({most_common_count} voters)")
+        if least_common_age:
+            least_common_age, least_common_count = least_common_age
+            print(f"Least Common Age: {least_common_age} ({least_common_count} voter{'s' if least_common_count > 1 else ''})1")
     else:
-        most_common_response = data_averages['Most Common Response']
-        least_common_response = data_averages['Least Common Response']
+        most_common_response = data_responses['Most Common Response']
+        least_common_response = data_responses['Least Common Response']
 
         if most_common_response:
             most_common_response, most_common_count = most_common_response[0]
