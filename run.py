@@ -1,7 +1,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
 from collections import Counter
-from fractions import Fraction 
+from fractions import Fraction
 import matplotlib.pyplot as plt
 import pandas as pd
 
@@ -17,11 +17,12 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('beauty-survey-data')
 
+
 def main_menu():
     print("Welcome to the Beauty Survey Data Analysis")
     print("1. Input Your Own Data")
     print("2. View Data Analysis")
-    print("3. view data visualization")
+    print("3. View data visualization")
     print("4. Exit")
 
     choice = input("Enter your choice (1/2/3/4): ")
