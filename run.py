@@ -95,6 +95,77 @@ def input_data():
     for col, response in enumerate(responses, start=1):
         worksheet.update_cell(last_row, col, response)
 
+
+def view_data_analysis():
+    print("Data Analysis Menu")
+    print("Choose a question number to analyze (1-10):\n" + "\n".join(survey_questions))
+
+    while True:
+        try:
+            question_number = int(input("Enter the question number you want to visualize (1-10): "))
+            while question_number not in [1,2,3,4,5,6,7,8,9,10]:
+                print('Not an appropriate choice, please select a valid row')
+                question_number = int(input("Enter the row of the ship: "))
+        except ValueError:
+            print('Not an appropriate choice, please select a valid row')
+            continue
+        else:
+            break
+
+    if question_number == 1:
+    # Special case for analyzing the age question
+        age_responses = [int(age) for age in worksheet.col_values(1)[1:]]
+        # Calculate statistics only if there are age responses
+        print(f"Analysis for question number {question_number}:")
+        average_age = sum(age_responses) / len(age_responses)
+        oldest_age = max(age_responses)
+        youngest_age = min(age_responses)
+        print(f"Average Age: {average_age:.2f}")
+        print(f"Oldest Person: {oldest_age}")
+        print(f"Youngest Person: {youngest_age}")
+    else:
+        # Retrieve the chosen question
+        responses = worksheet.col_values(question_number)
+        # Ensure that the question text is not counted as a vote
+        question_text = responses[0]
+        non_empty_responses = [response for response in responses[1:] if response != question_text]
+        response_counts = Counter(non_empty_responses)
+
+        print(f"Analysis for question number {question_number}:")
+        for response, count in response_counts.items():
+            print(f"{response}: {count} voters") # Exit early, no need to proceed with the rest of the code
+        # Retrieve the chosen question
+        responses = worksheet.col_values(question_number)
+        # Ensure that the question text is not counted as a vote
+        question_text = responses[0]
+        non_empty_responses = [response for response in responses[1:] if response != question_text]
+        response_counts = Counter(non_empty_responses)
+
+
+        print("View as:")
+        print("1. Decimal")
+        print("2. Fraction")
+        print("3. Percentage")
+        view_option = input("Enter your choice (1/2/3): ")
+
+        if view_option == '1':
+            # Display as decimal
+            for response, count in response_counts.items():
+                print(f"{response}: {count / len(responses):.2f}")
+        if view_option == '2':
+        # Display as a fraction
+            total_responses = len(responses)
+            for response, count in response_counts.items():
+                fraction = Fraction(count, total_responses)  # Use the Fraction class to calculate fractions
+                print(f"{response}: {fraction}")
+
+        elif view_option == '3':
+        # Display as a percentage
+            for response, count in response_counts.items():
+                percentage = (count / len(responses)) * 100
+                print(f"{response}: {percentage:.2f}%")
+
+
 def calculate_data_averages(question_number, worksheet):
     responses = worksheet.col_values(question_number)
     question_text = responses[0]
