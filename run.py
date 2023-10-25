@@ -2,7 +2,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 from collections import Counter
 from fractions import Fraction
-import matplotlib.pyplot as plt
+import plotly.express as px
 import pandas as pd
 
 
@@ -201,18 +201,12 @@ def view_as_bar_chart(question_number):
     non_empty_responses = [response for response in responses[1:] if response != question_text]
     response_counts = Counter(non_empty_responses)
 
-    # Create a bar chart for the responses
-    response_labels = list(response_counts.keys())
-    response_values = list(response_counts.values())
+    fig = px.bar(x=list(response_counts.keys()), y=list(response_counts.values()), labels={'x': 'Responses', 'y': 'Count'})
+    fig.update_layout(title=f"Responses to {question_text}")
 
-    plt.figure(figsize=(10, 6))
-    plt.bar(response_labels, response_values)
-    plt.xlabel("Responses")
-    plt.ylabel("Count")
-    plt.title(f"Responses to {question_text}")
-    plt.xticks(rotation=45)  # Rotate x-axis labels for better readability
-    plt.show()
+    fig.show()
 
+    
 def view_as_histogram(question_number):
     responses = worksheet.col_values(question_number)
     question_text = responses[0]
