@@ -128,6 +128,8 @@ def input_data():
 
     for col, response in enumerate(responses, start=1):
         worksheet.update_cell(last_row, col, response)
+    print("Your data has been uploaded sucessfully, thank you.")
+    input("Press Enter to return to the main menu.")
     main_menu()
 
 
@@ -178,6 +180,7 @@ def view_data_analysis():
             print(f"Youngest Person: {youngest_age}")
         else:
             print("Invalid choice. Please select 1 or 2.")
+        input("Press Enter to return to the main menu.")
         main_menu()
     else:
         # Retrieve the chosen question
@@ -226,7 +229,7 @@ def view_data_analysis():
             for response, count in response_counts.items():
                 percentage = (count / len(responses)) * 100
                 print(f"{response}: {percentage:.2f}%")
-
+        input("Press Enter to return to the main menu.")
         main_menu()
 
 
@@ -328,9 +331,8 @@ def view_data_common_responses():
             print(
                 f"Least Common Response: {least_common_response} ({least_common_count} voter{'s' if least_common_count > 1 else ''})"
             )
-
+    input("Press Enter to return to the main menu.")
     main_menu()
-
 
 # Entry point of the script
 if __name__ == "__main__":
