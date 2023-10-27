@@ -24,7 +24,7 @@ init()
 
 # Main menu for the application
 def main_menu():
-    print(f"{Fore.LIGHTMAGENTA_EX}Beauty Survey Data Analysis")
+    print(f"{Fore.LIGHTBLUE_EX}Beauty Survey Data Analysis")
     print("1. Input Your Own Data")
     print("2. View Data Analysis")
     print("3. View the data's most and least common responses")
@@ -139,7 +139,7 @@ def input_data():
 # Function to view data analysis
 def view_data_analysis():
     print("Data Analysis Menu")
-    print("Choose a question number to analyze (1-10):\n")
+    print("Choose a question number to analyse (1-10):\n")
 
     for line in survey_questions:
         time.sleep(1)
@@ -148,7 +148,7 @@ def view_data_analysis():
     while True:
         try:
             question_number = int(
-                input("Enter the question number you want to analyseccccccc (1-10): ")
+                input("Enter the question number you want to analyse(1-10): ")
             )
             while question_number not in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]:
                 print(
@@ -283,7 +283,7 @@ def calculate_most_and_least_responses(question_number, worksheet):
 # Function to view data's most and least common responses
 def view_data_common_responses():
     print("Data Averages Menu")
-    print("Choose a question number to analyze (1-10):\n")
+    print("Choose a question number to analyse (1-10):\n")
 
     for line in survey_questions:
         time.sleep(1)
