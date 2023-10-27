@@ -4,6 +4,7 @@ from collections import Counter
 from fractions import Fraction
 from collections import Counter
 import pandas as pd
+import time
 
 # Define the OAuth2 scopes for Google Sheets API
 SCOPE = [
@@ -136,8 +137,11 @@ def input_data():
 # Function to view data analysis
 def view_data_analysis():
     print("Data Analysis Menu")
-    print("Choose a question number to analyze (1-10):\n" +
-          "\n".join(survey_questions))
+    print("Choose a question number to analyze (1-10):\n")
+
+    for line in survey_questions:
+        time.sleep(1)
+        print(line + "\n")
 
     while True:
         try:
@@ -277,8 +281,11 @@ def calculate_most_and_least_responses(question_number, worksheet):
 # Function to view data's most and least common responses
 def view_data_common_responses():
     print("Data Averages Menu")
-    print("Choose a question number to analyze (1-10):\n" +
-          "\n".join(survey_questions))
+    print("Choose a question number to analyze (1-10):\n")
+
+    for line in survey_questions:
+        time.sleep(1)
+        print(line + "\n")
 
     while True:
         try:
