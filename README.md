@@ -187,6 +187,59 @@ The flexible data viewing feature is designed to cater to various analytical req
 - Data and analyses are available for quick reference and usage.
 - Enjoy the convenience of running the program online.
 
+### Future Feature Ideas:
+
+- Data Comparison: Implement the ability to compare responses to different questions, allowing users to identify correlations or patterns within the data.
+
+- Advanced Data Visualization: Explore options for visualizing survey data with charts, graphs, or plots to gain deeper insights.
+
+- Export Data: Provide users with the option to export data and analyses in various formats (e.g., CSV, PDF) for external use.
+
+- User Accounts: Create user accounts and profiles, allowing users to save their data and analyses, and retrieve them in future sessions.
+
+- Interactive Charts: Develop interactive charting tools to enable users to create custom visualizations for data analysis.
+
+- Custom Surveys: Allow users to create custom surveys with their own questions and response options.
+
+- Data Filters: Implement data filtering capabilities to focus on specific subsets of responses.
+
+- Export Reports: Generate and export comprehensive reports with summaries, insights, and visualizations.
+
+- Machine Learning Integration: Explore the integration of machine learning algorithms to derive predictive or analytical insights from the data.
+
+These future feature ideas can demonstrate your program's potential for growth and improvement, and they may attract contributors or collaborators interested in extending its functionality.
+
+
+### Data Model
+
+- Imports:
+    - The application imports various libraries and modules, including gspread for Google Sheets interaction, pandas for data manipulation, and colorama for terminal color formatting.
+
+- OAuth2 Authentication: 
+    - The application loads OAuth2 credentials from a JSON file, authorizes the application with Google Sheets, and opens the desired Google Sheets document.
+
+- Main Menu: 
+    - This is the central control point of the application. It displays menu options, handles user input, and redirects users to different functions based on their choices. Users can input data, view data analysis, find common responses, or exit.
+
+- Survey Questions: 
+    - The model defines the survey questions, valid response options, and question text. These details are used for data input and analysis.
+
+- Input Data: 
+    - Users can input their survey responses. The application validates and stores these responses in the Google Sheets document.
+
+- View Data Analysis:
+    - Users can select a survey question to analyze. Depending on the choice (e.g., Question 1), they can view data as a table or calculate averages.
+
+- Calculate Most and Least Responses: 
+    - For a given survey question, this function retrieves responses from Google Sheets, analyzes responses (e.g., counts common responses), and returns the most and least common responses.
+
+- Overall Flow Control: 
+    - Conditional statements and user input handling ensure the smooth flow of the application, allowing users to navigate between different functions.
+
+- Entry Point: 
+    - The script's execution starts at the main menu, where users can interact with the application.
+
+
 
 
 

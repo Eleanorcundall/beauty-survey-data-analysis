@@ -22,6 +22,7 @@ SHEET = GSPREAD_CLIENT.open("beauty-survey-data")
 
 init()
 
+
 # Main menu for the application
 def main_menu():
     print(f"\033[35;1mBeauty Survey Data Analysis\033[0m")
@@ -342,6 +343,7 @@ def view_data_common_responses():
             )
     input("Press Enter to return to the main menu.")
     main_menu()
+
 
 # Entry point of the script
 if __name__ == "__main__":
