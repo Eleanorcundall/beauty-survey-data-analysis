@@ -27,6 +27,18 @@ init()
 
 # Main menu for the application
 def main_menu():
+    """
+    Display the main menu for the Beauty Survey Data Analysis program.
+
+    This function presents the user with a menu of options to interact with the program,
+    including inputting data, viewing data analysis, exploring common responses, or exiting.
+    The user can make a choice by entering a number corresponding to their desired action.
+
+    No parameters are required.
+
+    Returns:
+    None
+    """
     print(f"\033[35;1mBeauty Survey Data Analysis\033[0m")
     print("1. Input Your Own Data")
     print("2. View Data Analysis")
@@ -54,6 +66,19 @@ worksheet = SHEET.get_worksheet(0)
 
 # Function to input survey data
 def input_data():
+    """
+    Input survey data from the user and store it in a Google Sheets document.
+
+    This function guides the user through a series of survey questions, including age
+    and various choices related to beauty and self-esteem. User responses are validated
+    against predefined options for each question. The entered data is then uploaded to
+    a Google Sheets document, making it a part of the dataset for analysis.
+
+    No parameters are required.
+
+    Returns:
+    None
+    """
     valid_responses = [
         None,  # The first question (age) can be any integer
         [
@@ -126,6 +151,15 @@ def input_data():
 
 # Function to view data analysis
 def view_data_analysis():
+    """
+    View and analyze survey data stored in a Google Sheets document.
+
+    This function allows users to choose a specific survey question they want to analyze.
+    For Question 1 (age), users can select to view data as a table or calculate averages.
+    For other questions, users can choose to view data as a table, fractions, or percentages.
+
+    No parameters are required.
+    """
     print("Data Analysis Menu")
     print("Choose a question number to analyse (1-10):\n")
 
@@ -229,6 +263,16 @@ def view_data_analysis():
 
 # Function to calculate most and least common responses
 def calculate_most_and_least_responses(question_number, worksheet):
+    """
+    Analyze survey responses to find the most and least common answers.
+
+    Parameters:
+    question_number (int): The number of the survey question to analyze.
+    worksheet (gspread.Worksheet): The worksheet with survey data.
+
+    Returns:
+    dict: Analysis results including question text, most common response, and least common response.
+    """
     responses = worksheet.col_values(question_number)
     question_text = responses[0]
     non_empty_responses = [
@@ -270,6 +314,17 @@ def calculate_most_and_least_responses(question_number, worksheet):
 
 # Function to view data's most and least common responses
 def view_data_common_responses():
+    """
+    Display common responses to a selected survey question.
+
+    This function prompts the user to choose a survey question (1-10) and calculates the most
+    and least common responses for that question. It then displays the results and returns
+    to the main menu.
+
+    Parameters: None
+
+    Returns: None
+    """
     print("Data Averages Menu")
     print("Choose a question number to analyse (1-10):\n")
 
