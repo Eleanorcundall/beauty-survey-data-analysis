@@ -7,6 +7,7 @@ import pandas as pd
 import time
 from colorama import Fore, Back, Style, init
 
+
 # Define the OAuth2 scopes for Google Sheets API
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",

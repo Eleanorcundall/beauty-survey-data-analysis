@@ -210,7 +210,7 @@ The flexible data viewing feature is designed to cater to various analytical req
 These future feature ideas can demonstrate your program's potential for growth and improvement, and they may attract contributors or collaborators interested in extending its functionality.
 
 
-### Data Model
+## Data Model
 
 - Imports:
     - The application imports various libraries and modules, including gspread for Google Sheets interaction, pandas for data manipulation, and colorama for terminal color formatting.
@@ -240,7 +240,101 @@ These future feature ideas can demonstrate your program's potential for growth a
     - The script's execution starts at the main menu, where users can interact with the application.
 
 
+## Testing 
+
+To maintain the functionality and reliability of the "Beauty Survey Data Analysis" application, comprehensive testing has been performed. The testing process covers various aspects of the application, including input validation, data analysis, and common response calculations. These have been tested in both the local terminal and the deployed heroku terminal. Here is an overview of the testing procedures and outcomes:
+
+### Input Data Testing
+
+- Data Validation: 
+    - The application validates user input for each survey question. Testing was performed to ensure that only valid responses are accepted, preventing incorrect data from being stored in the Google Sheets document.
+
+### Data Analysis Testing
+
+- View Data Analysis:
+    - Users can select specific survey questions for analysis. The application provides options to view data as tables, fractions, or percentages. Testing verified that the chosen analysis method accurately represents the survey responses.
+
+- Averages Calculation:
+    - For Question 1, the application calculates the average age, youngest age, and oldest age based on user responses. Testing ensured that these calculations are correct and provide meaningful insights.
+
+### Common Response Testing
+
+- Most and Least Common Responses: 
+    - Users can choose a survey question to find the most and least common responses. The application calculates these responses accurately and presents the results. Extensive testing confirmed the correctness of these calculations.
+
+### Menu-Driven Interface Testing
+
+- Main Menu Navigation:
+    - The main menu is a critical part of the application. Testing covered menu navigation, user choices, and error handling to guarantee a smooth and user-friendly experience.
+
+### Code Validation 
+
+- Passed code through a PEP8 linter with no significant issues
+
+### Bugs / Problems
+
+- Initially, the "Beauty Survey Data Analysis" application was designed to offer users visual insights into the survey data, utilizing charts and graphs. However, during the deployment on Heroku, a challenge arose as the visual components, like chart windows, didn't open as expected. This unforeseen issue prompted a shift in the application's data analysis strategy.
+
+- To adapt to the limitations on the Heroku platform, a revised approach was devised. The focus transitioned from visualizations to a more practical and versatile method – the calculation of most and least common responses. This decision proved to be highly effective in providing users with valuable insights into survey data. The shift in strategy not only resolved the technical challenges but also contributed to an improved structure and user experience.
+
+### Reamining Bugs
+
+- No remaining bugs to fix
 
 
+- The testing process included both unit testing and user acceptance testing (UAT) to assess the application from a user's perspective. Additionally, edge cases and invalid inputs were tested to ensure that the application handles unexpected scenarios gracefully. The "Beauty Survey Data Analysis" application has undergone rigorous testing to provide users with a reliable and accurate platform for survey data analysis.
 
+## Deployment 
 
+Beauty Survey Data Analysis was deployed using Code Institute's mock terminal for Heroku. 
+
+- I deployed my project with the following steps - 
+
+- Create the Heroku App:
+
+    - Logged into my Heroku account and accessed the dashboard.
+    Clicked "Create new app," named it uniquely, and selected the region.
+    Clicked "Create app."
+
+- Configure the App:
+
+    - Navigated to the app's settings tab.
+    Created a CREDS variable to store sensitive data like creds.json.
+    Pasted the creds.json content into the CREDS variable.
+
+- Add Buildpacks:
+
+    - In the app's settings, added Python and Node.js buildpacks in the correct order.
+
+- Deploy the Code:
+
+    - Chose the deployment method as Github.
+    Connected my Heroku app to my Github repository.
+
+- Choose Deployment Method:
+
+    - Opted for "Automatic Deploys" (This means every time a change is pushed to gitHub, Heroku will re build and deploy the app.)
+
+- Deploy the App:
+
+    - Clicked "Deploy Branch" and monitored the deployment logs.
+
+- Test the App:
+
+    - Ensured the app functioned as expected with test data.
+
+- Completion:
+
+   - Successfully deployed the "Beauty Survey Data Analysis" project on Heroku, making it accessible via the provided link.
+
+- This deployment process allowed me to make my project available to a broader audience and enhance my portfolio.
+
+## Credits 
+
+- I used the website Stack Overflow for help and advice throughout the project.
+
+- I used the love sandwiches project to help me set up the API from my project to Google sheets.
+
+- I used Google to help me with some of the questions and how to generate random answers in a speadsheet.
+
+- My mentour Derek McAuley helped me with how to display the questions slower.
