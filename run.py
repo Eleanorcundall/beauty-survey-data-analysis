@@ -6,6 +6,7 @@ from collections import Counter
 import pandas as pd
 import time
 from colorama import Fore, Back, Style, init
+from questions import survey_questions, survey_questions_and_answers
 
 
 # Define the OAuth2 scopes for Google Sheets API
@@ -45,21 +46,6 @@ def main_menu():
     else:
         print("Invalid choice. Please select 1, 2, or 3.")
         main_menu()
-
-
-# Survey questions and options
-survey_questions = [
-    "1: what is your age?\n",
-    "2: Do you think Instagram influencers are having a positive impact on young people's self-esteem?\n Please type one of the following - strongly disagree, disagree, neutral, agree, strongly agree\n",
-    "3: How much does Instagram or other social media affect what you purchase in the beauty industry?\n Please type one of the following - a lot, a little, a moderate amount, not much at all, a significant amount\n",
-    "4: How often do you wear makeup?\n Please type one of the following - rarely, daily, occasionally, weekly, monthly\n",
-    "5: Do you feel investing in skin care products is worth it?\n Please type one of the following - strongly disagree, disagree, neutral, agree, strongly agree\n",
-    "6: How would you rate your self-esteem and body image?\n Please type one of the following - very low, low, neutral, high, very high\n",
-    "7: Do you subscribe to beauty boxes or services that provide you with new products regularly?\n Please type one of the following - yes, no\n",
-    "8: How much do you typically spend on beauty products each month?\n Please type one of the following - under £25, £25 - £50, £50 - £100, £100 - £200, £200 - £300, over £300\n",
-    "9: Do you have a step by step skincare routine?\n Please type one of the following - yes, no\n",
-    "10: Do you feel more attractive when you are wearing makeup?\n Please type one of the following - yes, no\n",
-]
 
 
 # Load the first worksheet from the Google Sheets document
@@ -108,7 +94,7 @@ def input_data():
 
     responses = []
 
-    for i, question in enumerate(survey_questions):
+    for i, question in enumerate(survey_questions_and_answers):
         while True:
             response = input(f"{question}: ").lower()
 
@@ -169,7 +155,7 @@ def view_data_analysis():
         print("1. Table")
         print("2. Averages")
         view_option = input("Enter your choice (1/2): ")
-
+        
         if view_option == "1":
             # Display as a table
             age_responses = [int(age) for age in worksheet.col_values(1)[1:]]
