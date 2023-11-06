@@ -3,6 +3,29 @@ Beauty Survey Data Analysis is a Python program designed to analyze survey data 
 
 [Here is the live version of my project.](https://beauty-survey-data-analysis-c46750aa61b4.herokuapp.com/)
 
+!['Image showing programme on both laptop and monitor](./images/bsda-multi-screen.png)
+
+## Table of contents 
+- [Flow Chart](#flow-chart)
+
+- [How to use](#how-to-use)
+
+- [Features](#features)
+
+- [Libraries/ Imports used](#libraries-imports-used)
+
+- [Testing](#testing)
+
+- [Deployment](#deployment)
+
+- [Credits](#credits)
+
+
+### Flow Chart 
+
+!['Flow chart Showing how programme works'](./images/flow-chart.jpg)
+
+
 ## How to Use
 The Beauty Survey Data Analysis program offers a versatile and intuitive user experience through a series of interactive menus and prompts. Users can seamlessly navigate various tasks within the program:
 
@@ -39,6 +62,8 @@ and both the most and least common answers will be shown with their response cou
 
 ### Live Data Input Feature
 
+!['Screenshot showing user inputting live data'](./images/input-data-feature.png)
+
  The "Data Input" feature of this program enables users to conveniently input survey data. Here's how it works:
 
 - Interactive Survey Questions: 
@@ -70,10 +95,14 @@ The "Data Analysis" feature empowers users to explore the survey dataset and gai
 
     - Percentage View: For questions 2 -10, and For a quick overview, users can opt for this mode to see response percentages for each option.
 
+    !["Screen shot showing Multiple viewing options for questions 2-10](./images/data-analysis-options.png)
+
 - Special Treatment for Question 1: For the first question, which collects age data (an integer), the fraction and percentage options being taken away and an additional feature has been added:
 
     - Table View: Users can visualize the distribution of ages as a table.
     - Averages: Users can view statistics such as the average age, youngest age, and oldest age among respondents.
+
+    !["Screenshot showing Table and Averages viewing options for Question 1"](./images/data-analysis-q1-options.png)
 
 - User-Friendly Interface
     - The interface guides users through the process of choosing a question and their preferred mode of data presentation.
@@ -210,34 +239,31 @@ The flexible data viewing feature is designed to cater to various analytical req
 These future feature ideas can demonstrate your program's potential for growth and improvement, and they may attract contributors or collaborators interested in extending its functionality.
 
 
-## Data Model
+## Libraries/ Imports used
 
-- Imports:
-    - The application imports various libraries and modules, including gspread for Google Sheets interaction, pandas for data manipulation, and colorama for terminal color formatting.
+- Gspread:
 
-- OAuth2 Authentication: 
-    - The application loads OAuth2 credentials from a JSON file, authorizes the application with Google Sheets, and opens the desired Google Sheets document.
+    - Purpose: I use the gspread library to interact with Google Sheets. It allows my program to read, write, and manipulate data stored in Google Sheets. In this project, it's essential for connecting to the Google Sheets document where the survey data is stored.
 
-- Main Menu: 
-    - This is the central control point of the application. It displays menu options, handles user input, and redirects users to different functions based on their choices. Users can input data, view data analysis, find common responses, or exit.
+- Google.oauth2.service_account.Credentials:
 
-- Survey Questions: 
-    - The model defines the survey questions, valid response options, and question text. These details are used for data input and analysis.
+    - Purpose: I utilize the Credentials class from the google.oauth2.service_account module to load and manage the credentials required to authenticate my application with Google services. In this case, it's used to authenticate and authorize access to my Google Sheets document.
 
-- Input Data: 
-    - Users can input their survey responses. The application validates and stores these responses in the Google Sheets document.
+- Collections.Counter:
 
-- View Data Analysis:
-    - Users can select a survey question to analyze. Depending on the choice (e.g., Question 1), they can view data as a table or calculate averages.
+    - Purpose: I make use of the Counter class from the collections module to count the occurrences of elements in a sequence. In my project, it is employed to tally the responses to each survey question and calculate the most and least common responses for analysis.
+    
+- Fractions.Fraction:
 
-- Calculate Most and Least Responses: 
-    - For a given survey question, this function retrieves responses from Google Sheets, analyzes responses (e.g., counts common responses), and returns the most and least common responses.
+    - Purpose: The Fraction class from the fractions module is used for precise fractional arithmetic. I apply it to calculate and display the response percentages when analyzing survey data.
 
-- Overall Flow Control: 
-    - Conditional statements and user input handling ensure the smooth flow of the application, allowing users to navigate between different functions.
+- Pandas as pd:
 
-- Entry Point: 
-    - The script's execution starts at the main menu, where users can interact with the application.
+    - Purpose: I use the pandas library for data manipulation and analysis. It simplifies working with data as DataFrames, making tasks like creating tables to display survey data, responses, and their counts more straightforward.
+
+- Time:
+
+    - Purpose: I include the time module, providing functions to work with time-related operations. In my project, it's employed to introduce time delays (e.g., using time.sleep()) to control the pacing of output when displaying survey questions to the user.
 
 
 ## Testing 

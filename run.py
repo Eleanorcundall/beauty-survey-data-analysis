@@ -5,7 +5,6 @@ from fractions import Fraction
 from collections import Counter
 import pandas as pd
 import time
-from colorama import Fore, Back, Style, init
 from questions import survey_questions, survey_questions_and_answers
 
 
@@ -22,7 +21,6 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("beauty-survey-data")
 
-init()
 
 
 # Main menu for the application
@@ -188,15 +186,28 @@ def view_data_analysis():
         print("Choose how to view the data for question number 1:")
         print("1. Table")
         print("2. Averages")
-        view_option = input("Enter your choice (1/2): ")
+
+        while True:
+            try:
+                view_option = int(input("Enter your choice (1/2): "))
+                while view_option not in [1, 2]:
+                    print(
+                        "Not an appropriate choice, please select a valid option number"
+                    )
+                    view_option = int(input("Enter the option number: "))
+            except ValueError:
+                print("Not an appropriate choice, please select a valid Option")
+                continue
+            else:
+                break
         
-        if view_option == "1":
+        if view_option == 1:
             # Display as a table
             age_responses = [int(age) for age in worksheet.col_values(1)[1:]]
             table_data = {"Age": age_responses}
             table_df = pd.DataFrame(table_data)
             print(table_df)
-        elif view_option == "2":
+        elif view_option == 2:
             # Display averages
             age_responses = [int(age) for age in worksheet.col_values(1)[1:]]
             average_age = sum(age_responses) / len(age_responses)
@@ -234,9 +245,21 @@ def view_data_analysis():
         print("1. Table")
         print("2. Fraction")
         print("3. Percentage")
-        view_option = input("Enter your choice (1/2/3): ")
 
-        if view_option == "1":
+    while True:
+            try:
+                view_option = int(input("Enter your choice (1/2/3): "))
+                while view_option not in [1, 2, 3]:
+                    print(
+                        "Not an appropriate choice, please select a valid option number"
+                    )
+                    view_option = int(input("Enter the option number: "))
+            except ValueError:
+                print("Not an appropriate choice, please select a valid option number")
+                continue
+            else:
+                break
+    if view_option == 1:
             # Display as a table
             table_data = {"Response": [], "Count": []}
             for response, count in response_counts.items():
@@ -245,20 +268,20 @@ def view_data_analysis():
 
             table_df = pd.DataFrame(table_data)
             print(table_df)
-        if view_option == "2":
+    if view_option == 2:
             # Display as a fraction
             total_responses = len(responses)
             for response, count in response_counts.items():
                 # Use the Fraction class to calculate fractions
                 fraction = Fraction(count, total_responses)
                 print(f"{response}: {fraction}")
-        elif view_option == "3":
+    elif view_option == 3:
             # Display as a percentage
             for response, count in response_counts.items():
                 percentage = (count / len(responses)) * 100
                 print(f"{response}: {percentage:.2f}%")
-        input("Press Enter to return to the main menu.")
-        main_menu()
+    input("Press Enter to return to the main menu.")
+    main_menu()
 
 
 # Function to calculate most and least common responses
