@@ -62,8 +62,6 @@ and both the most and least common answers will be shown with their response cou
 
 ### Live Data Input Feature
 
-!['Screenshot showing user inputting live data'](./images/input-data-feature.png)
-
  The "Data Input" feature of this program enables users to conveniently input survey data. Here's how it works:
 
 - Interactive Survey Questions: 
@@ -77,6 +75,8 @@ and both the most and least common answers will be shown with their response cou
 
 - User-Friendly Interface: 
     - The interactive interface guides users through the input process, making it accessible to individuals with various levels of technical proficiency.
+    
+ !['Screenshot showing user inputting live data'](./images/input-data-feature.png)
 
  The "Data Input" feature provides a simple, user-centric way to contribute to the dataset and utilize your survey data effectively. It ensures that users' inputs are immediately integrated into the program's database, enhancing the depth and richness of the dataset.
 
@@ -123,6 +123,8 @@ The "Common Responses Analysis" feature allows users to investigate the most and
 - Accessibility:
     - The user-friendly interface and clear options make it easy for users to explore and analyze common responses.
 
+!["Screenshot of terminal showing most and least common response data"](./images/most-common-responses.png)
+
 The "Common Responses Analysis" feature is a valuable tool for users who want to identify trends and variations within the survey dataset. It enables users to gain a comprehensive understanding of how respondents answer each question, making it easier to draw insights and conclusions from the data.
 
 
@@ -135,6 +137,8 @@ The "User-Friendly Main Menu" is designed to provide an intuitive and accessible
 
 - Choice and Flexibility:
     - Users have the freedom to choose how they interact with the program. Whether they want to input their data, explore data analysis, or analyze common responses, the main menu offers clear options to meet their needs.
+
+!["Screenshot of main start up menu in terminal"](./images/main-menu.png)
 
  The "User-Friendly Main Menu" serves as the central hub for the program, allowing users to decide how they want to interact with the survey data. Its intuitive design ensures that users can easily navigate through different functionalities, contributing to a user-friendly and efficient experience.
 
@@ -185,6 +189,8 @@ One of the key features of the program is data persistence. This means that the 
 - Data Security: 
     - Data persistence is implemented with a focus on security. Your data is stored securely, and privacy considerations are taken into account. The program does not share or expose your data to external sources.
 
+!["Screenshot showing how data is stored in a google sheet"](./images/spreadsheet-data.png)
+
 The data persistence feature enhances the program's functionality and value. It ensures that the information you input is not temporary but a valuable resource that can be used for ongoing analysis, comparisons, and reference. This feature provides a sense of continuity and convenience for users who want to track their data over time and derive insights from it.
 
 ### Flexible Data Viewing
@@ -215,6 +221,8 @@ The flexible data viewing feature is designed to cater to various analytical req
 - Enhance accessibility and usability for a wide range of users.
 - Data and analyses are available for quick reference and usage.
 - Enjoy the convenience of running the program online.
+
+![|"Screenshot showing programme running in web based terminal"](./images/heroku-terminal.png)
 
 ### Future Feature Ideas:
 
