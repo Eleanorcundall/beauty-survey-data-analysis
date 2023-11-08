@@ -222,7 +222,7 @@ The flexible data viewing feature is designed to cater to various analytical req
 - Data and analyses are available for quick reference and usage.
 - Enjoy the convenience of running the program online.
 
-![|"Screenshot showing programme running in web based terminal"](./images/heroku-terminal.png)
+!["Screenshot showing programme running in web based terminal"](./images/heroku-terminal.png)
 
 ### Future Feature Ideas:
 
@@ -303,7 +303,8 @@ To maintain the functionality and reliability of the "Beauty Survey Data Analysi
 
 ### Code Validation 
 
-- Passed code through a PEP8 linter with no significant issues
+- Passed code through a PEP8 linter with no issues
+!["Screenshot showing code institute python linter with code pasted in showing no issues"](./images/pep8-no-errors.png)
 
 ### Bugs / Problems
 

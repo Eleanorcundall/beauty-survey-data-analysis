@@ -22,16 +22,14 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("beauty-survey-data")
 
 
-
 # Main menu for the application
 def main_menu():
     """
     Display the main menu for the Beauty Survey Data Analysis program.
-
-    This function presents the user with a menu of options to interact with the program,
-    including inputting data, viewing data analysis, exploring common responses, or exiting.
-    The user can make a choice by entering a number corresponding to their desired action.
-
+    This function presents the user with a menu of options to interact with the
+    program, including inputting data, viewing data analysis, exploring common
+    responses, or exiting. The user can make a choice by entering a number
+    corresponding to their desired action.
     No parameters are required.
 
     Returns:
@@ -67,10 +65,11 @@ def input_data():
     """
     Input survey data from the user and store it in a Google Sheets document.
 
-    This function guides the user through a series of survey questions, including age
-    and various choices related to beauty and self-esteem. User responses are validated
-    against predefined options for each question. The entered data is then uploaded to
-    a Google Sheets document, making it a part of the dataset for analysis.
+    This function guides the user through a series of survey questions,
+    including age and various choices related to beauty and self-esteem.
+    User responses are validated against predefined options for each question.
+    The entered data is then uploaded to a Google Sheets document, making it a
+    part of the dataset for analysis.
 
     No parameters are required.
 
@@ -126,7 +125,8 @@ def input_data():
                     responses.append(response)
                     break
                 else:
-                    print("Invalid response. Please enter a valid age (an integer).")
+                    print(
+                        "Invalid response. Please enter a valid age.")
             else:
                 valid_options = valid_responses[i]
                 if response in valid_options:
@@ -134,7 +134,8 @@ def input_data():
                     break
                 else:
                     print(
-                        f"Invalid response. Please choose one of the following options: {', '.join(valid_options)}"
+                        f"""Invalid response. Please input one of the following
+options: {', '.join(valid_options)}"""
                     )
 
     # Find the last row with data
@@ -152,9 +153,10 @@ def view_data_analysis():
     """
     View and analyze survey data stored in a Google Sheets document.
 
-    This function allows users to choose a specific survey question they want to analyze.
-    For Question 1 (age), users can select to view data as a table or calculate averages.
-    For other questions, users can choose to view data as a table, fractions, or percentages.
+    This function allows users to choose a specific survey question they want
+    to analyze. For Question 1 (age), users can select to view data as a table
+    or calculate averages. For other questions, users can choose to view data
+    as a table, fractions, or percentages.
 
     No parameters are required.
     """
@@ -172,11 +174,13 @@ def view_data_analysis():
             )
             while question_number not in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]:
                 print(
-                    "Not an appropriate choice, please select a valid question number"
+                    """Not an appropriate choice,
+please input a valid question number"""
                 )
                 question_number = int(input("Enter the question number: "))
         except ValueError:
-            print("Not an appropriate choice, please select a valid question number")
+            print("""Not an appropriate choice,
+please input a valid question number""")
             continue
         else:
             break
@@ -192,15 +196,17 @@ def view_data_analysis():
                 view_option = int(input("Enter your choice (1/2): "))
                 while view_option not in [1, 2]:
                     print(
-                        "Not an appropriate choice, please select a valid option number"
+                        """Not an appropriate choice,
+Please input a valid option number"""
                     )
                     view_option = int(input("Enter the option number: "))
             except ValueError:
-                print("Not an appropriate choice, please select a valid Option")
+                print("""Not an appropriate choice,
+please input a valid option number""")
                 continue
             else:
                 break
-        
+
         if view_option == 1:
             # Display as a table
             age_responses = [int(age) for age in worksheet.col_values(1)[1:]]
@@ -247,39 +253,41 @@ def view_data_analysis():
         print("3. Percentage")
 
     while True:
-            try:
-                view_option = int(input("Enter your choice (1/2/3): "))
-                while view_option not in [1, 2, 3]:
-                    print(
-                        "Not an appropriate choice, please select a valid option number"
+        try:
+            view_option = int(input("Enter your choice (1/2/3): "))
+            while view_option not in [1, 2, 3]:
+                print(
+                    """Not an appropriate choice,
+select a valid option number"""
                     )
-                    view_option = int(input("Enter the option number: "))
-            except ValueError:
-                print("Not an appropriate choice, please select a valid option number")
-                continue
-            else:
-                break
+                view_option = int(input("Enter the option number: "))
+        except ValueError:
+            print("""Not an appropriate choice,
+select a valid option number""")
+            continue
+        else:
+            break
     if view_option == 1:
-            # Display as a table
-            table_data = {"Response": [], "Count": []}
-            for response, count in response_counts.items():
-                table_data["Response"].append(response)
-                table_data["Count"].append(count)
+        # Display as a table
+        table_data = {"Response": [], "Count": []}
+        for response, count in response_counts.items():
+            table_data["Response"].append(response)
+            table_data["Count"].append(count)
 
             table_df = pd.DataFrame(table_data)
             print(table_df)
     if view_option == 2:
-            # Display as a fraction
-            total_responses = len(responses)
-            for response, count in response_counts.items():
-                # Use the Fraction class to calculate fractions
-                fraction = Fraction(count, total_responses)
-                print(f"{response}: {fraction}")
+        # Display as a fraction
+        total_responses = len(responses)
+        for response, count in response_counts.items():
+            # Use the Fraction class to calculate fractions
+            fraction = Fraction(count, total_responses)
+            print(f"{response}: {fraction}")
     elif view_option == 3:
-            # Display as a percentage
-            for response, count in response_counts.items():
-                percentage = (count / len(responses)) * 100
-                print(f"{response}: {percentage:.2f}%")
+        # Display as a percentage
+        for response, count in response_counts.items():
+            percentage = (count / len(responses)) * 100
+            print(f"{response}: {percentage:.2f}%")
     input("Press Enter to return to the main menu.")
     main_menu()
 
@@ -294,7 +302,8 @@ def calculate_most_and_least_responses(question_number, worksheet):
     worksheet (gspread.Worksheet): The worksheet with survey data.
 
     Returns:
-    dict: Analysis results including question text, most common response, and least common response.
+    dict: Analysis results including question text, most common response,
+    and least common response.
     """
     responses = worksheet.col_values(question_number)
     question_text = responses[0]
@@ -340,8 +349,9 @@ def view_data_common_responses():
     """
     Display common responses to a selected survey question.
 
-    This function prompts the user to choose a survey question (1-10) and calculates the most
-    and least common responses for that question. It then displays the results and returns
+    This function prompts the user to choose a survey question (1-10)
+    and calculates the most and least common responses for that question.
+    It then displays the results and returns
     to the main menu.
 
     Parameters: None
@@ -359,16 +369,19 @@ def view_data_common_responses():
         try:
             question_number = int(
                 input(
-                    "Enter the question number you want to calculate common responses for (1-10): "
+                    """Enter the question number you want to calculate least
+and most common responses for (1-10): """
                 )
             )
             while question_number not in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]:
                 print(
-                    "Not an appropriate choice, please select a valid question number"
+                    """Not an appropriate choice,
+please input a valid question number"""
                 )
                 question_number = int(input("Enter the question number: "))
         except ValueError:
-            print("Not an appropriate choice, please select a valid question number")
+            print("""Not an appropriate choice,
+please input a valid question number|""")
             continue
         else:
             break
@@ -385,11 +398,13 @@ def view_data_common_responses():
         if most_common_age:
             most_common_age, most_common_count = most_common_age[0]
             print(
-                f"Most Common Age: {most_common_age} ({most_common_count} voters)")
+                f"""Most Common Age: {most_common_age}
+({most_common_count} voters)""")
         if least_common_age:
             least_common_age, least_common_count = least_common_age
             print(
-                f"Least Common Age: {least_common_age} ({least_common_count} voter{'s' if least_common_count > 1 else ''})"
+                f"""Least Common Age: {least_common_age}
+({least_common_count} voter{'s' if least_common_count > 1 else ''})"""
             )
     else:
         most_common_response = data_responses["Most Common Response"]
@@ -398,13 +413,15 @@ def view_data_common_responses():
         if most_common_response:
             most_common_response, most_common_count = most_common_response[0]
             print(
-                f"Most Common Response: {most_common_response} ({most_common_count} voters)"
+                f"""Most Common Response: {most_common_response}
+({most_common_count} voters)"""
             )
 
         if least_common_response:
             least_common_response, least_common_count = least_common_response
             print(
-                f"Least Common Response: {least_common_response} ({least_common_count} voter{'s' if least_common_count > 1 else ''})"
+                f"""Least Common Response: {least_common_response}
+({least_common_count} voter{'s' if least_common_count > 1 else ''})"""
             )
     input("Press Enter to return to the main menu.")
     main_menu()
