@@ -379,4 +379,4 @@ Beauty Survey Data Analysis was deployed using Code Institute's mock terminal fo
 
 - I used Google to help me with some of the questions and how to generate random answers in a speadsheet.
 
-- My mentour Derek McAuley helped me with how to display the questions slower.
+- My mentour, Derek McAuley helped me with how to display the questions slower and gave me the idea of using a while loop to ensure the user inputs are correct and do not crash the programme.
