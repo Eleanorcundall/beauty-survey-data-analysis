@@ -283,6 +283,12 @@ To maintain the functionality and reliability of the "Beauty Survey Data Analysi
 - Data Validation: 
     - The application validates user input for each survey question. Testing was performed to ensure that only valid responses are accepted, preventing incorrect data from being stored in the Google Sheets document.
 
+### Input option testing
+
+- Input Validation:
+    - In order to ensure a robust and user-friendly experience, I've incorporated a while loop within the user input sections of the program. This loop acts as a guardian, preventing the program from breaking when users input an invalid option when prompted. Instead of terminating, the program will gracefully persist within the loop, repeatedly prompting users for a valid input until one is provided. This ensures that the user can't accidentally derail the program with an incorrect choice, maintaining a seamless and error-tolerant interaction.
+
+
 ### Data Analysis Testing
 
 - View Data Analysis:
@@ -312,12 +318,13 @@ To maintain the functionality and reliability of the "Beauty Survey Data Analysi
 
 - To adapt to the limitations on the Heroku platform, a revised approach was devised. The focus transitioned from visualizations to a more practical and versatile method – the calculation of most and least common responses. This decision proved to be highly effective in providing users with valuable insights into survey data. The shift in strategy not only resolved the technical challenges but also contributed to an improved structure and user experience.
 
+
 ### Reamining Bugs
 
 - No remaining bugs to fix
 
 
-- The testing process included both unit testing and user acceptance testing (UAT) to assess the application from a user's perspective. Additionally, edge cases and invalid inputs were tested to ensure that the application handles unexpected scenarios gracefully. The "Beauty Survey Data Analysis" application has undergone rigorous testing to provide users with a reliable and accurate platform for survey data analysis.
+The testing process included both unit testing and user acceptance testing (UAT) to assess the application from a user's perspective. Additionally, edge cases and invalid inputs were tested to ensure that the application handles unexpected scenarios gracefully. The "Beauty Survey Data Analysis" application has undergone rigorous testing to provide users with a reliable and accurate platform for survey data analysis.
 
 ## Deployment 
 
