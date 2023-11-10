@@ -274,8 +274,8 @@ select a valid option number""")
             table_data["Response"].append(response)
             table_data["Count"].append(count)
 
-            table_df = pd.DataFrame(table_data)
-            print(table_df)
+        table_df = pd.DataFrame(table_data)
+        print(table_df)
     if view_option == 2:
         # Display as a fraction
         total_responses = len(responses)
