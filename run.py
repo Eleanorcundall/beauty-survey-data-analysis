@@ -7,7 +7,7 @@ from collections import Counter
 import pandas as pd
 import time
 from questions import survey_questions, survey_questions_and_answers
-import os 
+import os
 
 
 # Define the OAuth2 scopes for Google Sheets API
@@ -441,6 +441,7 @@ def clear_screen():
         _ = os.system('cls')  # for Windows
     else:
         _ = os.system('clear')  # for Linux and macOS
+
 
 def exit_program():
     """
