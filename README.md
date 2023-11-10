@@ -215,6 +215,8 @@ The program offers a flexible data viewing feature that allows you to choose how
 - Percentage Representation:
     - Another way to view the data is as percentages. This representation converts response counts into percentages, providing an easy-to-understand measure of how common each response is within the dataset. Percentages are particularly useful for gauging the relative popularity of response options.
 
+!["Screenshot showing percentage view in heroku terminal for question 2!](./assets/images/percentage-view.png)
+
 - Question-Specific Analysis: 
     - Depending on the question you're analyzing, you might be presented with different viewing options. For instance, if you're looking at question 1 (about age), you have the different choice of viewing averages, including the youngest, oldest, and average age. This specialized analysis option is tailored to the nature of the question.
  
