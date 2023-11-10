@@ -41,7 +41,7 @@ def main_menu():
     print("1. Input Your Own Data")
     print("2. View Data Analysis")
     print("3. View the data's most and least common responses")
-    print("4. Exit")
+    print("4. Exit - keep data in terminal")
     print("5. Exit and clear")
 
     choice = input("Enter your choice (1/2/3/4/5): ")
