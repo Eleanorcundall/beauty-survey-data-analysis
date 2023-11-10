@@ -368,7 +368,7 @@ def view_data_common_responses():
     print("Choose a question number to analyse (1-10):\n")
 
     for line in survey_questions:
-        time.sleep(1)
+        time.sleep(0.5)
         print(line + "\n")
 
     while True:
