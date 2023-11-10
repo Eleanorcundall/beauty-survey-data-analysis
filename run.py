@@ -337,7 +337,6 @@ def calculate_most_and_least_responses(question_number, worksheet):
         }
     else:
         response_counts = Counter(non_empty_responses)
-        total_responses = len(non_empty_responses)
 
         most_common_response = response_counts.most_common(1)
         least_common_response = response_counts.most_common()[-1]
