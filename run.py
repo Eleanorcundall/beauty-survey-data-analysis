@@ -53,6 +53,8 @@ def main_menu():
     elif choice == "3":
         view_data_common_responses()
     elif choice == "4":
+        print("""Thank you for using beauty survey data analysis,
+click 'Run Program' to start again.""")
         exit()
     elif choice == "5":
         exit_program()
@@ -448,6 +450,8 @@ def exit_program():
     """
     print("Exiting the program. Goodbye!")
     clear_screen()
+    print("""Thank you for using beauty survey data analysis,
+click 'Run Program' to start again.""")
     sys.exit(0)
 
 

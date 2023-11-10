@@ -3,7 +3,7 @@ Beauty Survey Data Analysis is a Python program designed to analyze survey data 
 
 [Here is the live version of my project.](https://beauty-survey-data-analysis-c46750aa61b4.herokuapp.com/)
 
-!['Image showing programme on both laptop and monitor](./images/bsda-multi-screen.png)
+!['Image showing programme on both laptop and monitor](./assets/images/bsda-multi-screen.png)
 
 ## Table of contents 
 - [Flow Chart](#flow-chart)
@@ -23,7 +23,7 @@ Beauty Survey Data Analysis is a Python program designed to analyze survey data 
 
 ### Flow Chart 
 
-!['Flow chart Showing how programme works'](./images/flow-chart.jpg)
+!['Flow chart Showing how programme works'](./assets/images/flow-chart.jpg)
 
 
 ## How to Use
@@ -54,7 +54,7 @@ and both the most and least common answers will be shown with their response cou
 
 ### Program Termination:
 
-- Users can choose option 4 when at the main menu (which they can be taken to by pressing enter at the end of each action), to exit the program gracefully.
+- Users can choose option 4 or 5 when at the main menu (which they can be taken to by pressing enter at the end of each action), to exit the program gracefully and still view the programme data or to exit and clear the terminal.
 
 - The Beauty Survey Data Analysis program prioritizes user interaction and feedback, enhancing data collection and analysis capabilities. This structured approach to interaction and data management ensures an effective and efficient user experience.
 
@@ -76,7 +76,7 @@ and both the most and least common answers will be shown with their response cou
 - User-Friendly Interface: 
     - The interactive interface guides users through the input process, making it accessible to individuals with various levels of technical proficiency.
     
- !['Screenshot showing user inputting live data'](./images/input-data-feature.png)
+ !['Screenshot showing user inputting live data'](./assets/images/input-data-feature.png)
 
  The "Data Input" feature provides a simple, user-centric way to contribute to the dataset and utilize your survey data effectively. It ensures that users' inputs are immediately integrated into the program's database, enhancing the depth and richness of the dataset.
 
@@ -95,14 +95,14 @@ The "Data Analysis" feature empowers users to explore the survey dataset and gai
 
     - Percentage View: For questions 2 -10, and For a quick overview, users can opt for this mode to see response percentages for each option.
 
-    !["Screen shot showing Multiple viewing options for questions 2-10](./images/data-analysis-options.png)
+    !["Screen shot showing Multiple viewing options for questions 2-10](./assets/images/data-analysis-options.png)
 
 - Special Treatment for Question 1: For the first question, which collects age data (an integer), the fraction and percentage options being taken away and an additional feature has been added:
 
     - Table View: Users can visualize the distribution of ages as a table.
     - Averages: Users can view statistics such as the average age, youngest age, and oldest age among respondents.
 
-    !["Screenshot showing Table and Averages viewing options for Question 1"](./images/data-analysis-q1-options.png)
+    !["Screenshot showing Table and Averages viewing options for Question 1"](./assets/images/data-analysis-q1-options.png)
 
 - User-Friendly Interface
     - The interface guides users through the process of choosing a question and their preferred mode of data presentation.
@@ -123,7 +123,7 @@ The "Common Responses Analysis" feature allows users to investigate the most and
 - Accessibility:
     - The user-friendly interface and clear options make it easy for users to explore and analyze common responses.
 
-!["Screenshot of terminal showing most and least common response data"](./images/most-common-responses.png)
+!["Screenshot of terminal showing most and least common response data"](./assets/images/most-common-responses.png)
 
 The "Common Responses Analysis" feature is a valuable tool for users who want to identify trends and variations within the survey dataset. It enables users to gain a comprehensive understanding of how respondents answer each question, making it easier to draw insights and conclusions from the data.
 
@@ -138,17 +138,22 @@ The "User-Friendly Main Menu" is designed to provide an intuitive and accessible
 - Choice and Flexibility:
     - Users have the freedom to choose how they interact with the program. Whether they want to input their data, explore data analysis, or analyze common responses, the main menu offers clear options to meet their needs.
 
-!["Screenshot of main start up menu in terminal"](./images/main-menu.png)
+!["Screenshot of main start up menu in terminal"](./assets/images/main-menu.png)
 
  The "User-Friendly Main Menu" serves as the central hub for the program, allowing users to decide how they want to interact with the survey data. Its intuitive design ensures that users can easily navigate through different functionalities, contributing to a user-friendly and efficient experience.
 
 ### Graceful Program Exit
 
-The "Exit" option within the program provides a graceful way for users to conclude their session. This feature ensures that users can conveniently exit the program and return to their operating system or environment.
+The "Exit" options within the program provides a graceful way for users to conclude their session. This feature ensures that users can conveniently exit the program and return to their operating system or environment.
 
 - User Control: 
-    - Users have the autonomy to exit the program at any point by selecting the "Exit" option from the main menu.
-    - Clean Termination: When chosen, the program will execute a clean and orderly termination process, preventing abrupt closures or data loss.
+    - Users have the autonomy to exit the program at any point by selecting one of the "Exit" options from the main menu.
+
+- Clean Termination:
+    - When chosen, the program will execute a clean and orderly termination process, preventing abrupt closures or data loss.
+
+- Enhanced Exit Options:
+    - The main menu of the application offers users a seamless experience when deciding to exit the program. Option 4, 'Exit,' allows users to gracefully end the program while retaining the displayed data in the terminal. This feature is particularly useful when users want to review data or make a note of the information presented. Additionally, option 5 has been introduced to provide an alternative exit method. Choosing this option not only concludes the program but also clears the terminal, offering a clean slate for users who no longer need the displayed data on the screen. These exit options cater to diverse user preferences, offering flexibility in managing the program's termination and terminal display."
 
 The "Graceful Program Exit" feature is an essential part of the program, offering users a convenient and user-friendly way to conclude their session without any unexpected interruptions. This ensures a smooth user experience and maintains the integrity of the program's operation.
 
@@ -189,7 +194,7 @@ One of the key features of the program is data persistence. This means that the 
 - Data Security: 
     - Data persistence is implemented with a focus on security. Your data is stored securely, and privacy considerations are taken into account. The program does not share or expose your data to external sources.
 
-!["Screenshot showing how data is stored in a google sheet"](./images/spreadsheet-data.png)
+!["Screenshot showing how data is stored in a google sheet"](./assets/images/spreadsheet-data.png)
 
 The data persistence feature enhances the program's functionality and value. It ensures that the information you input is not temporary but a valuable resource that can be used for ongoing analysis, comparisons, and reference. This feature provides a sense of continuity and convenience for users who want to track their data over time and derive insights from it.
 
@@ -200,8 +205,12 @@ The program offers a flexible data viewing feature that allows you to choose how
 - Table View: 
     - When analyzing survey data, sometimes a tabular format is the most convenient. The program provides a table view that displays the data in an organized and easy-to-read format. This view is particularly useful when you want to see responses and their corresponding counts in a structured layout.
 
+!["Screenshot showing table view in heroku terminal for question 5"](./assets/images/table-view.png)
+
 - Fractional Representation:
     - For a more detailed analysis, the program offers the option to view responses as fractions. This feature calculates the fraction of each response option based on the total number of responses. It provides a more granular view of the data, allowing you to understand the distribution of responses more precisely.
+
+!["Screenshot showing fraction view in heroku terminal for question 4!](./assets/images/fraction-view.png)
 
 - Percentage Representation:
     - Another way to view the data is as percentages. This representation converts response counts into percentages, providing an easy-to-understand measure of how common each response is within the dataset. Percentages are particularly useful for gauging the relative popularity of response options.
@@ -222,7 +231,7 @@ The flexible data viewing feature is designed to cater to various analytical req
 - Data and analyses are available for quick reference and usage.
 - Enjoy the convenience of running the program online.
 
-!["Screenshot showing programme running in web based terminal"](./images/heroku-terminal.png)
+!["Screenshot showing programme running in web based terminal"](./assets/images/heroku-terminal.png)
 
 ### Future Feature Ideas:
 
@@ -249,6 +258,10 @@ These future feature ideas can demonstrate your program's potential for growth a
 
 ## Libraries/ Imports used
 
+- Sys import:
+
+    - The 'sys' module plays a crucial role in my project, facilitating control over system-level functionalities. Primarily, it enables the implementation of the exit function, allowing users to exit the program gracefully. This module enhances the overall user experience by providing a structured and controlled way to terminate the application, contributing to the smooth flow and functionality of the survey data analysis tool.
+
 - Gspread:
 
     - Purpose: I use the gspread library to interact with Google Sheets. It allows my program to read, write, and manipulate data stored in Google Sheets. In this project, it's essential for connecting to the Google Sheets document where the survey data is stored.
@@ -273,6 +286,9 @@ These future feature ideas can demonstrate your program's potential for growth a
 
     - Purpose: I include the time module, providing functions to work with time-related operations. In my project, it's employed to introduce time delays (e.g., using time.sleep()) to control the pacing of output when displaying survey questions to the user.
 
+ - Os Module
+
+    - Purpose: In my project, the 'os' module serves the purpose of managing system-level interactions, specifically in the context of clearing the terminal screen. By incorporating 'os,' I ensure a clean and organized display, optimizing user experience as they navigate through various sections of the survey data analysis tool. This module contributes to the program's seamless functionality, enhancing user interaction and maintaining a clear terminal interface."
 
 ## Testing 
 
@@ -282,11 +298,12 @@ To maintain the functionality and reliability of the "Beauty Survey Data Analysi
 
 - Data Validation: 
     - The application validates user input for each survey question. Testing was performed to ensure that only valid responses are accepted, preventing incorrect data from being stored in the Google Sheets document.
+    - The application employs a robust data validation strategy during the input of survey data. A predefined list of valid responses for each question has been meticulously crafted to handle potential errors during user input. Using a while loop The program checks whether the user's response is within the list of valid options for the respective question. If an invalid response is detected, the program prompts the user to input a valid response. This careful validation process ensures that only accurate and meaningful data is accepted, preventing the storage of erroneous information in the Google Sheets document."
 
 ### Input option testing
 
 - Input Validation:
-    - In order to ensure a robust and user-friendly experience, I've incorporated a while loop within the user input sections of the program. This loop acts as a guardian, preventing the program from breaking when users input an invalid option when prompted. Instead of terminating, the program will gracefully persist within the loop, repeatedly prompting users for a valid input until one is provided. This ensures that the user can't accidentally derail the program with an incorrect choice, maintaining a seamless and error-tolerant interaction.
+    - To ensure a robust and user-friendly experience, I've implemented a while loop combined with try and except blocks within the user input sections of the program. This combination acts as a guardian, preventing the program from breaking when users input an invalid option. Instead of terminating, the program gracefully persists within the loop, utilizing try and except to handle potential input errors. It repeatedly prompts users for valid input until one is provided. This approach guarantees that users can't accidentally derail the program with an incorrect choice, maintaining a seamless and error-tolerant interaction."
 
 
 ### Data Analysis Testing
@@ -310,8 +327,8 @@ To maintain the functionality and reliability of the "Beauty Survey Data Analysi
 ### Code Validation 
 
 - Passed code through a PEP8 linter with no issues
-!["Screenshot showing code institute python linter with run.py code passed in showing no issues"](./images/pep8-no-errors.png)
-!["Screenshot showing code institute python linter with questions.py code passed in showing no issues"](./images/pep8-no-errors-questions.png)
+!["Screenshot showing code institute python linter with run.py code passed in showing no issues"](./assets/images/pep8-no-errors.png)
+!["Screenshot showing code institute python linter with questions.py code passed in showing no issues"](./assets/images/pep8-no-errors-questions.png)
 
 
 ### Bugs / Problems
