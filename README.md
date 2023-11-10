@@ -339,6 +339,11 @@ To maintain the functionality and reliability of the "Beauty Survey Data Analysi
 
 - To adapt to the limitations on the Heroku platform, a revised approach was devised. The focus transitioned from visualizations to a more practical and versatile method – the calculation of most and least common responses. This decision proved to be highly effective in providing users with valuable insights into survey data. The shift in strategy not only resolved the technical challenges but also contributed to an improved structure and user experience.
 
+### Enhancement Reflection
+
+- Streamlining User Input in the Input Data Function
+
+    - In retrospect, if revisiting this project, a notable improvement to the user experience could be achieved by implementing a numerical representation system for responses in the input data function. Instead of users manually entering precise responses, each response would be associated with a unique number. This modification would simplify the input process, eliminating the need for users to match exact wording, spacing, and spelling. By adopting a numerical reference system, users would be able to provide input more efficiently and accurately, contributing to a more user-friendly and error-tolerant interaction with the survey data analysis tool.
 
 ### Reamining Bugs
 
