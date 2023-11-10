@@ -1,3 +1,4 @@
+import sys
 import gspread
 from google.oauth2.service_account import Credentials
 from collections import Counter
@@ -6,6 +7,7 @@ from collections import Counter
 import pandas as pd
 import time
 from questions import survey_questions, survey_questions_and_answers
+import os 
 
 
 # Define the OAuth2 scopes for Google Sheets API
@@ -40,8 +42,9 @@ def main_menu():
     print("2. View Data Analysis")
     print("3. View the data's most and least common responses")
     print("4. Exit")
+    print("5. Exit and clear")
 
-    choice = input("Enter your choice (1/2/3/4): ")
+    choice = input("Enter your choice (1/2/3/4/5): ")
 
     if choice == "1":
         input_data()
@@ -51,6 +54,8 @@ def main_menu():
         view_data_common_responses()
     elif choice == "4":
         exit()
+    elif choice == "5":
+        exit_program()
     else:
         print("Invalid choice. Please select 1, 2, or 3.")
         main_menu()
@@ -425,6 +430,25 @@ please input a valid question number|""")
             )
     input("Press Enter to return to the main menu.")
     main_menu()
+
+
+def clear_screen():
+    """
+    To clear the terminal
+    """
+    # Check if the operating system is Windows or not
+    if os.name == 'nt':
+        _ = os.system('cls')  # for Windows
+    else:
+        _ = os.system('clear')  # for Linux and macOS
+
+def exit_program():
+    """
+    To exit the programme and clear the terminal.
+    """
+    print("Exiting the program. Goodbye!")
+    clear_screen()
+    sys.exit(0)
 
 
 # Entry point of the script

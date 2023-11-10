@@ -310,7 +310,9 @@ To maintain the functionality and reliability of the "Beauty Survey Data Analysi
 ### Code Validation 
 
 - Passed code through a PEP8 linter with no issues
-!["Screenshot showing code institute python linter with code pasted in showing no issues"](./images/pep8-no-errors.png)
+!["Screenshot showing code institute python linter with run.py code passed in showing no issues"](./images/pep8-no-errors.png)
+!["Screenshot showing code institute python linter with questions.py code passed in showing no issues"](./images/pep8-no-errors-questions.png)
+
 
 ### Bugs / Problems
 
